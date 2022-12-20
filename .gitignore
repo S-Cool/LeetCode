@@ -1,13 +1,3 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-
-# folder settings
-courier.iml
+# folders
 .idea/
 target/
-applog.txt
-logs/
-
-# class files
-out/

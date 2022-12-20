@@ -13,7 +13,7 @@ package com.interview.vais;
 //        would return [-1, -1] because there is no sub-list of list l that can be summed up to the given target
 //        value t = 15.
 
-public class Solution {
+public class Solution_12_2022 {
 
     public static void main(String[] args) {
         int[] list = {4, 3, 5, 7, 8};

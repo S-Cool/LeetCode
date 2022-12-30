@@ -23,7 +23,8 @@ public class MaximumSubarray_53 {
     }
 
     /**
-     * Time complexity O(n) / Space complexity O(1)
+     * Time complexity: O(n)
+     * Space complexity: O(1)
      *
      * @param nums
      * @return
@@ -45,7 +46,8 @@ public class MaximumSubarray_53 {
 
     /**
      * Brute Force variant
-     * Time complexity O(n^2) / Space complexity O(1)
+     * Time complexity: O(n^2)
+     * Space complexity: O(1)
      *
      * @param inputArray
      * @return

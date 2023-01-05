@@ -18,7 +18,7 @@ import java.util.Map;
 //        Input: nums = [1,1,1,3,3,4,3,2,4,2]
 //        Output: true
 
-public class ContainsDuplicate271 {
+public class ContainsDuplicate_271 {
 
     public static void main(String[] args) {
         int[] nums = {1,2,3,1};

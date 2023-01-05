@@ -25,7 +25,7 @@ import java.util.Stack;
 //        Input: s = "(]"
 //        Output: false
 
-public class ValidParentheses20 {
+public class ValidParentheses_20 {
 
     public static void main(String[] args) {
         String str = "({[]})";

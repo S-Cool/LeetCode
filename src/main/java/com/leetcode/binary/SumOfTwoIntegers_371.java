@@ -10,7 +10,7 @@ package com.leetcode.binary;
 //        Input: a = 2, b = 3
 //        Output: 5
 
-public class SumOfTwoIntegers371 {
+public class SumOfTwoIntegers_371 {
 
     public static void main(String[] args) {
         int sum = getSum(9, 11);

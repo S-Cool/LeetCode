@@ -22,7 +22,7 @@ import java.util.Map;
 //
 //        Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-public class LongestSubstringWithoutRepeatingCharacters3 {
+public class LongestSubstringWithoutRepeatingCharacters_3 {
     public static void main(String[] args) {
         int result = lengthOfLongestSubstring("abcabcbb");
         System.out.println("Result: " + result);

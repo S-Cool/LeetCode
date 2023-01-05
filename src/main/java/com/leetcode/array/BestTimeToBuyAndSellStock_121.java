@@ -18,7 +18,7 @@ package com.leetcode.array;
 //        Output: 0
 //        Explanation: In this case, no transactions are done and the max profit = 0.
 
-public class BestTimeToBuyAndSellStock121 {
+public class BestTimeToBuyAndSellStock_121 {
 
     public static void main(String[] args) {
         int[] array = {7, 1, 5, 3, 6, 4};

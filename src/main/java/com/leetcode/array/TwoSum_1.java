@@ -23,11 +23,11 @@ import java.util.Map;
 //    Input: nums = [3,3], target = 6
 //    Output: [0,1]
 
-public class TwoSum1 {
+public class TwoSum_1 {
 
     public static void main(String[] args) {
         int[] nums = {2,7,11,15};
-        TwoSum1 twoSum1 = new TwoSum1();
+        TwoSum_1 twoSum1 = new TwoSum_1();
 
         int[] result = twoSum1.twoSum(nums, 9);
         System.out.println("Result: [" + result[0] + ", " + result[1] +"]");

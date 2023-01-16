@@ -13,13 +13,11 @@ package com.leetcode.tree;
 //        Input: root = [1,null,2]
 //        Output: 2
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 public class MaximumDepthOfBinaryTree_104 {
 
     public static void main(String[] args) {
-
 
         TreeNode left = new TreeNode(15, null, null);
         TreeNode right = new TreeNode(7, null, null);
@@ -29,20 +27,23 @@ public class MaximumDepthOfBinaryTree_104 {
 
         TreeNode treeNode = new TreeNode(3, leftNode, rightNode);
 
-        int result = maxDepth(treeNode);
-        System.out.println("Result: " + result);
+        int maxDepthBFS = maxDepthBFS(treeNode);
+        System.out.println("Result: " + maxDepthBFS);
+
+        int resultDFS = maxDepthDFS(treeNode);
+        System.out.println("Result: " + resultDFS);
     }
 
     /**
      * DFS(Depth-first search)
-     *
-     * Time complexity : O(n^2)
+     * <p>
+     * Time complexity : O(n)
      * Space complexity : O(1)
      *
      * @param root
      * @return
      */
-    public static int maxDepth(TreeNode root) {
+    public static int maxDepthDFS(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -59,17 +60,42 @@ public class MaximumDepthOfBinaryTree_104 {
 
             max = Math.max(temp, max);
 
-            if (node.left != null) {
-                stack.push(node.left);
-                value.push(temp + 1);
-            }
-
             if (node.right != null) {
                 stack.push(node.right);
                 value.push(temp + 1);
             }
+
+            if (node.left != null) {
+                stack.push(node.left);
+                value.push(temp + 1);
+            }
         }
         return max;
+    }
+
+    public static int maxDepthBFS(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        int count = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            while (size-- > 0) {
+
+                TreeNode node = queue.poll();
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+            }
+            count++;
+        }
+        return count;
     }
 
     private static class TreeNode {
@@ -88,6 +114,13 @@ public class MaximumDepthOfBinaryTree_104 {
             this.val = val;
             this.left = left;
             this.right = right;
+        }
+
+        @Override
+        public String toString() {
+            return "TreeNode{" +
+                    "val=" + val +
+                    '}';
         }
     }
 }

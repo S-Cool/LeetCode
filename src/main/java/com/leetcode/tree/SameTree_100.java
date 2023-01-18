@@ -101,7 +101,7 @@ public class SameTree_100 {
         return true;
     }
 
-    private static class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

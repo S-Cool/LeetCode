@@ -25,7 +25,10 @@ public class ValidateBinarySearchTree_98 {
         TreeNode left = new TreeNode(6, null, null);
         TreeNode right = new TreeNode(10, null, null);
 
-        TreeNode leftNode = new TreeNode(4, null, null);
+        TreeNode left2 = new TreeNode(1, null, null);
+        TreeNode right2 = new TreeNode(4, null, null);
+
+        TreeNode leftNode = new TreeNode(3, left2, right2);
         TreeNode rightNode = new TreeNode(8, left, right);
 
         TreeNode treeNode = new TreeNode(5, leftNode, rightNode);

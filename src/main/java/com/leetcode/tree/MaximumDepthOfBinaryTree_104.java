@@ -36,7 +36,7 @@ public class MaximumDepthOfBinaryTree_104 {
 
     /**
      * DFS(Depth-first search)
-     * <p>
+     *
      * Time complexity : O(n)
      * Space complexity : O(1)
      *
@@ -73,6 +73,15 @@ public class MaximumDepthOfBinaryTree_104 {
         return max;
     }
 
+    /**
+     * BFS(Breadth-first search)
+     *
+     * Time complexity : O(n)
+     * Space complexity : O(1)
+     *
+     * @param root
+     * @return
+     */
     public static int maxDepthBFS(TreeNode root) {
         if (root == null) {
             return 0;

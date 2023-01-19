@@ -14,9 +14,7 @@ package com.leetcode.tree;
 //        Input: root = []
 //        Output: []
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class InvertBinaryTree_226 {
 
@@ -52,7 +50,7 @@ public class InvertBinaryTree_226 {
             return null;
         }
 
-        Stack<TreeNode> node = new Stack<>();
+        Deque<TreeNode> node = new ArrayDeque<>();
         node.push(root);
 
         while (!node.isEmpty()) {
@@ -94,15 +92,15 @@ public class InvertBinaryTree_226 {
 
     private static void print(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
+        List<Integer> result = new ArrayList<>();
         queue.offer(root);
 
-        System.out.print("[");
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size-- > 0) {
 
                 TreeNode node = queue.poll();
-                System.out.print(node.val + ", ");
+                result.add(node.val);
 
                 if (node.left != null) {
                     queue.offer(node.left);
@@ -112,6 +110,6 @@ public class InvertBinaryTree_226 {
                 }
             }
         }
-        System.out.print("]");
+        System.out.println(result);
     }
 }

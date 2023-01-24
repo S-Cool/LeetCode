@@ -34,13 +34,25 @@ public class ImplementTriePrefixTree_208 {
     public static void main(String[] args) {
 
         Trie trie = new Trie();
+        System.out.println("Trie created;");
+
         trie.insert("apple");
-        trie.search("apple");
-        trie.search("app");
-        boolean result = trie.startsWith("app");
-        System.out.println("Start with *app*-. Result - " + result);
+        System.out.println("Inserted - *apple*");
+
+        boolean isAppleExist = trie.search("apple");
+        System.out.println("Search *apple*. Result - " + isAppleExist);
+
+        boolean isAppExist = trie.search("app");
+        System.out.println("Search *app*. Result - " + isAppExist);
+
+        boolean isStartWithApp = trie.startsWith("app");
+        System.out.println("Start with *app*-. Result - " + isStartWithApp);
+
         trie.insert("app");
-        trie.search("app");
+        System.out.println("Inserted - *app*");
+
+        boolean isSearchApp = trie.search("app");
+        System.out.println("Search *app*. Result - " + isSearchApp);
     }
 
     public static class Trie {
@@ -48,9 +60,14 @@ public class ImplementTriePrefixTree_208 {
 
         public Trie() {
             root = new TrieNode();
-            System.out.println("Trie created;");
         }
 
+        /**
+         * Time complexity : O(m)
+         * Space complexity : O(n)
+         *
+         * @param word
+         */
         public void insert(String word) {
             TrieNode current = root;
             for (int i = 0; i < word.length(); i++) {
@@ -62,28 +79,44 @@ public class ImplementTriePrefixTree_208 {
                 current = current.children[character];
             }
             current.isEnd = true;
-            System.out.println("Inserted - *" + word + "*");
         }
 
+        /**
+         * Time complexity : O(m)
+         * Space complexity : O(1)
+         *
+         * @param word
+         * @return
+         */
         public boolean search(String word) {
             TrieNode current = root;
             int i = -1;
             int length = word.length();
             while (++i < length) {
                 int id = word.charAt(i) - 'a';
-                if ((current = current.children[id]) == null) return false;
+                if ((current = current.children[id]) == null) {
+                    return false;
+                }
             }
-            System.out.println("Search *" + word + "*. Result - *" + current.isEnd + "*");
             return current.isEnd;
         }
 
+        /**
+         * Time complexity : O(m)
+         * Space complexity : O(1)
+         *
+         * @param prefix
+         * @return
+         */
         public boolean startsWith(String prefix) {
             TrieNode current = root;
             int i = -1;
             int length = prefix.length();
             while (++i < length) {
                 int id = prefix.charAt(i) - 'a';
-                if ((current = current.children[id]) == null) return false;
+                if ((current = current.children[id]) == null) {
+                    return false;
+                }
             }
             return true;
         }

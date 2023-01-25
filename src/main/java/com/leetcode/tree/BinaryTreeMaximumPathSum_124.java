@@ -25,6 +25,8 @@ import java.util.Map;
 
 public class BinaryTreeMaximumPathSum_124 {
 
+    private static int maxSum;
+
     public static void main(String[] args) {
         TreeNode left1 = new TreeNode(2, null, null);
         TreeNode right1 = new TreeNode(-1, null, null);
@@ -39,6 +41,9 @@ public class BinaryTreeMaximumPathSum_124 {
 
         int result = maxPathSum(treeNode);
         System.out.println("Result: " + result);
+
+        int sumRecursive = maxPathSumRecursive(treeNode);
+        System.out.println("Recursive Result: " + sumRecursive);
     }
 
     public static int maxPathSum(TreeNode root) {
@@ -59,6 +64,33 @@ public class BinaryTreeMaximumPathSum_124 {
             result = Math.max(left + right + node.val, result);
         }
         return result;
+    }
+
+    /**
+     * Time complexity : O(n)
+     * Space complexity : O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static int maxPathSumRecursive(TreeNode root) {
+        maxSum = Integer.MIN_VALUE;
+        gainFromSubtree(root);
+        return maxSum;
+    }
+
+    private static int gainFromSubtree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int gainFromLeft = Math.max(gainFromSubtree(root.left), 0);
+
+        int gainFromRight = Math.max(gainFromSubtree(root.right), 0);
+
+        maxSum = Math.max(maxSum, gainFromLeft + gainFromRight + root.val);
+
+        return Math.max(gainFromLeft + root.val, gainFromRight + root.val);
     }
 
     private static Iterable<TreeNode> postorderSort(TreeNode root) {

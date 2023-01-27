@@ -122,7 +122,7 @@ public class ImplementTriePrefixTree_208 {
         }
     }
 
-    public static class TrieNode {
+    private static class TrieNode {
         boolean isEnd;
         TrieNode[] children;
 

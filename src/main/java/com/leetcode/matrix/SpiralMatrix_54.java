@@ -47,17 +47,17 @@ public class SpiralMatrix_54 {
             }
             right--;
 
-            if (!(left <= right && top <= bottom)) break;
+            if (left <= right && top <= bottom) {
+                for (int i = right; left <= i; i--) {
+                    result.add(matrix[bottom][i]);
+                }
+                bottom--;
 
-            for (int i = right; left <= i; i--) {
-                result.add(matrix[bottom][i]);
+                for (int i = bottom; top <= i; i--) {
+                    result.add(matrix[i][left]);
+                }
+                left++;
             }
-            bottom--;
-
-            for (int i = bottom; top <= i; i--) {
-                result.add(matrix[i][left]);
-            }
-            left++;
         }
 
         return result;

@@ -20,22 +20,25 @@ package com.leetcode.graph;
 //        To take course 1 you should have finished course 0, and to take course 0 you should also have finished
 //        course 1. So it is impossible.
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CourseSchedule_207 {
 
     public static void main(String[] args) {
-        boolean positiveResult = canFinish(5, new int[][]{{0, 1}, {0, 2}, {1, 3}, {1, 4}, {3, 4}});
-        System.out.println("Positive Result: " + positiveResult);
+        boolean positiveResult = canFinishDFS(5, new int[][]{{0, 1}, {0, 2}, {1, 3}, {1, 4}, {3, 4}});
+        System.out.println("Positive DFS Result: " + positiveResult);
 
-        boolean negativeResult = canFinish(2, new int[][]{{0, 1}, {1, 0}});
-        System.out.println("Negative Result: " + negativeResult);
+        boolean negativeResult = canFinishDFS(2, new int[][]{{0, 1}, {1, 0}});
+        System.out.println("Negative DFS Result: " + negativeResult);
+
+        boolean positiveResultBFS = canFinishBFS(5, new int[][]{{0, 1}, {0, 2}, {1, 3}, {1, 4}, {3, 4}});
+        System.out.println("Positive BFS Result: " + positiveResultBFS);
+
+        boolean negativeResultBFS = canFinishBFS(2, new int[][]{{0, 1}, {1, 0}});
+        System.out.println("Negative BFS Result: " + negativeResultBFS);
     }
 
-    public static boolean canFinish(int numCourses, int[][] prerequisites) {
+    public static boolean canFinishDFS(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> dependency = new HashMap<>();
 
         for (int i = 0; i < numCourses; i++) {
@@ -59,13 +62,47 @@ public class CourseSchedule_207 {
         return true;
     }
 
+    public static boolean canFinishBFS(int numCourses, int[][] prerequisites) {
+        Map<Integer, ArrayList<Integer>> graph = new HashMap<>();
+        int count = numCourses;
+
+        int[] indegree = new int[numCourses];
+        Queue<Integer> queue = new LinkedList<>();
+
+        for (int i = 0; i < numCourses; i++) {
+            graph.put(i, new ArrayList<>());
+        }
+
+        for (int[] prerequisite : prerequisites) {
+            graph.get(prerequisite[0]).add(prerequisite[1]);
+            indegree[prerequisite[1]]++;
+        }
+
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.offer(i);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            for (int i : graph.get(current)) {
+                if (--indegree[i] == 0) {
+                    queue.offer(i);
+                }
+            }
+            count--;
+        }
+        return count == 0;
+    }
+
     private static boolean dfs(int indexNode, int[] visited, Map<Integer, List<Integer>> graph) {
-        // Return false if the node is visited and viewed again before completion
+        // Return true if the node is visited and viewed again before completion
         if (visited[indexNode] == 1) {
             return true;
         }
 
-        // Return true if the node is completed processing
+        // Return false if the node is completed processing
         if (visited[indexNode] == 2) {
             return false;
         }
@@ -80,7 +117,7 @@ public class CourseSchedule_207 {
             }
         }
 
-        // If no more other nodes for the current "node" mark as completed and return true
+        // If no more other nodes for the current "node" mark as completed and return false
         visited[indexNode] = 2;
 
         return false;

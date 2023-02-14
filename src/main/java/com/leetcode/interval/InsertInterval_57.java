@@ -1,6 +1,6 @@
 package com.leetcode.interval;
 
-//        You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi]
+//        You are given an array of non-overlapping intervals where intervals[i] = [starti, endi]
 //        represent the start and the end of the ith interval and intervals is sorted in ascending order by
 //        starti. You are also given an interval newInterval = [start, end] that represents the start and end of
 //        another interval.
@@ -21,12 +21,13 @@ package com.leetcode.interval;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InsertInterval_57 {
 
     public static void main(String[] args) {
-        int[][] intervals = {{1, 2}, {3, 5},{6, 7}, {8, 10},{12, 16}};
+        int[][] intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
         int[] newInterval = {4, 8};
         int[][] result = insert(intervals, newInterval);
         for (int[] res : result) {
@@ -43,33 +44,18 @@ public class InsertInterval_57 {
      * @return
      */
     public static int[][] insert(int[][] intervals, int[] newInterval) {
-        // Insert the interval first before merge processing.
         intervals = insertInterval(intervals, newInterval);
 
-        List<int[]> answer = new ArrayList<>();
-        for (int i = 0; i < intervals.length; i++) {
-            int[] currInterval = {intervals[i][0], intervals[i][1]};
-            // Merge until the list gets exhausted or no overlap is found.
-            while (i < intervals.length && doesIntervalsOverlap(currInterval, intervals[i])) {
-                currInterval = mergeIntervals(currInterval, intervals[i]);
-                i++;
+        LinkedList<int[]> answer = new LinkedList<>();
+        for (int[] interval : intervals) {
+            if (answer.isEmpty() || answer.getLast()[1] < interval[0]) {
+                answer.add(interval);
+            } else {
+                answer.getLast()[1] = Math.max(answer.getLast()[1], interval[1]);
             }
-            // Decrement to ensure we don't skip the interval due to outer for-loop incrementing.
-            i--;
-            answer.add(currInterval);
         }
 
-        return answer.toArray(new int[answer.size()][2]);
-    }
-
-    // Returns true if the intervals a and b have a common element.
-    private static boolean doesIntervalsOverlap(int[] a, int[] b) {
-        return Math.min(a[1], b[1]) - Math.max(a[0], b[0]) >= 0;
-    }
-
-    // Return the interval having all the elements of intervals a and b.
-    private static int[] mergeIntervals(int[] a, int[] b) {
-        return new int[]{Math.min(a[0], b[0]), Math.max(a[1], b[1])};
+        return answer.toArray(new int[answer.size()][]);
     }
 
     // Insert the interval newInterval, into the list interval keeping the sorting order intact.

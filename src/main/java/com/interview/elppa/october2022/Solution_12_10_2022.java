@@ -18,7 +18,7 @@ public class Solution_12_10_2022 {
 
     public static int findMaxSum(int[] inputArray) {
         int max = Integer.MIN_VALUE;
-        int sum = 0;
+        int sum;
 
         for (int i = 0; i < inputArray.length; i++) {
             sum = 0;
@@ -36,8 +36,8 @@ public class Solution_12_10_2022 {
         int max = Integer.MIN_VALUE;
         int sum = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-            sum = sum + nums[i];
+        for (int num : nums) {
+            sum += num;
             max = Math.max(sum, max);
 
             if (sum < 0) sum = 0;

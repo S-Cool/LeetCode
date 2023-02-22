@@ -17,7 +17,8 @@ package com.leetcode.string;
 public class FindTheIndexOfTheFirstOccurrenceInaString_28 {
 
     public static void main(String[] args) {
-        String haystack = "sadbutsad", needle = "sad";
+        String haystack = "sadbutsad";
+        String needle = "sad";
         int i = strStr(haystack, needle);
         System.out.println("Result: " + i);
     }

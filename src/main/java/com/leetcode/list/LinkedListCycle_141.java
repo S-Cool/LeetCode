@@ -37,6 +37,13 @@ public class LinkedListCycle_141 {
         System.out.println("Result: " + hasCycle);
     }
 
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(1)
+     *
+     * @param head
+     * @return
+     */
     public static boolean hasCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;

@@ -31,6 +31,13 @@ public class ReverseLinkedList_206 {
         System.out.println(listNode.val);
     }
 
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(1)
+     *
+     * @param head
+     * @return
+     */
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode current = head;

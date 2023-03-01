@@ -31,6 +31,14 @@ public class RemoveNthNodeFromEndOfList_19 {
         System.out.println(listNode.val);
     }
 
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(1)
+     *
+     * @param head
+     * @param n
+     * @return
+     */
     public static ListNode removeNthFromEnd(ListNode head, int n) {
 
         ListNode dummy = new ListNode(0, head);

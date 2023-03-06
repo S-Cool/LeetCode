@@ -54,7 +54,7 @@ public class FindMedianFromDataStream_295 {
     }
 
     /**
-     * Time complexity: O(n*logn)
+     * Time complexity: O(logn)
      * Space complexity: O(n)
      *
      * @param num

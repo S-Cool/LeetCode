@@ -35,8 +35,11 @@ public class FindMedianFromDataStream_295 {
         FindMedianFromDataStream_295 stream = new FindMedianFromDataStream_295();
         stream.addNum(3);
         stream.addNum(2);
-        stream.addNum(7);
+        stream.addNum(1);
         stream.addNum(4);
+        stream.addNum(5);
+        stream.addNum(6);
+        stream.addNum(7);
         double median = stream.findMedian();
         System.out.println("Result: " + median);
     }
@@ -50,6 +53,12 @@ public class FindMedianFromDataStream_295 {
         right = new PriorityQueue<>();
     }
 
+    /**
+     * Time complexity: O(n*logn)
+     * Space complexity: O(n)
+     *
+     * @param num
+     */
     public void addNum(int num) {
         if (even) {
             right.offer(num);
@@ -61,6 +70,12 @@ public class FindMedianFromDataStream_295 {
         even = !even;
     }
 
+    /**
+     * Time complexity: O(1)
+     * Space complexity: O(1)
+     *
+     * @return
+     */
     public double findMedian() {
         if (even)
             return (left.peek() + right.peek()) / 2.0;

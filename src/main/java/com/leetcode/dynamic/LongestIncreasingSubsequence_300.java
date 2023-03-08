@@ -19,12 +19,18 @@ package com.leetcode.dynamic;
 public class LongestIncreasingSubsequence_300 {
 
     public static void main(String[] args) {
-
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
         int result = lengthOfLIS(nums);
         System.out.println("Result: " + result);
     }
 
+    /**
+     * Time complexity: O(n^2)
+     * Space complexity: O(n)
+     *
+     * @param nums
+     * @return
+     */
     public static int lengthOfLIS(int[] nums) {
         if (nums.length == 0) return 0;
 

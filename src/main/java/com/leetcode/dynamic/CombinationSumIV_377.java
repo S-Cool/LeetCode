@@ -63,15 +63,15 @@ public class CombinationSumIV_377 {
      * Time complexity: O(m*n)
      * Space complexity: O(n)
      *
-     * @param number
+     * @param nums
      * @param target
      * @return
      */
-    public static int combinationSum(int[] number, int target) {
+    public static int combinationSum(int[] nums, int target) {
         int[] dp = new int[target + 1];
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
-            for (int num : number) {
+            for (int num : nums) {
                 if (num <= i) {
                     dp[i] += dp[i - num];
                 }

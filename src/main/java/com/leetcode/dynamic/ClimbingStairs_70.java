@@ -23,9 +23,12 @@ public class ClimbingStairs_70 {
 
     public static void main(String[] args) {
         System.out.println(climbStairs(5));
+        System.out.println(climbStairsRecursive(5));
     }
 
     /**
+     * Bottom Up Approach
+     * <p>
      * Time complexity: O(n)
      * Space complexity: O(1)
      *
@@ -45,5 +48,27 @@ public class ClimbingStairs_70 {
             two = temp;
         }
         return one;
+    }
+
+    /**
+     * Recursive Approach
+     * <p>
+     * Time complexity: O(2^n)
+     * Space complexity: O(n)
+     *
+     * @param n
+     * @return
+     */
+    public static int climbStairsRecursive(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        return climbStairs(n - 1) + climbStairs(n - 2);
     }
 }

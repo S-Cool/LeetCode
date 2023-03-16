@@ -48,10 +48,12 @@ public class CombinationSumIV_377 {
         int[] dp = new int[target + 1];
         dp[0] = 1;
         for (int i = 0; i < target; i++) {
-            if (dp[i] == 0) continue;
+            if (dp[i] == 0) {
+                continue;
+            }
             for (int num : nums)
                 if (num + i <= target) {
-                    dp[i + num] += dp[i];
+                    dp[num + i] = dp[num + i] + dp[i];
                 }
         }
         return dp[target];

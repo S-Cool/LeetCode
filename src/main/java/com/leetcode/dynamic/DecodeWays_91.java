@@ -55,12 +55,14 @@ public class DecodeWays_91 {
         int[] dp = new int[length + 1];
         dp[length] = 1;
 
-        for (int i = length - 1; i >= 0; i--)
+        for (int i = length - 1; i >= 0; i--) {
             if (s.charAt(i) != '0') {
                 dp[i] = dp[i + 1];
-                if (i < length - 1 && (s.charAt(i) == '1' || s.charAt(i) == '2' && s.charAt(i + 1) < '7'))
+                if (i < length - 1 && (s.charAt(i) == '1' || s.charAt(i) == '2' && s.charAt(i + 1) < '7')) {
                     dp[i] += dp[i + 2];
+                }
             }
+        }
         return dp[0];
     }
 
@@ -74,12 +76,13 @@ public class DecodeWays_91 {
     public static int numDecodingsConst(String s) {
         int dp1 = 1;
         int dp2 = 0;
-        int n = s.length();
+        int length = s.length();
 
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = length - 1; i >= 0; i--) {
             int dp = s.charAt(i) == '0' ? 0 : dp1;
-            if (i < n - 1 && (s.charAt(i) == '1' || s.charAt(i) == '2' && s.charAt(i + 1) < '7'))
+            if (i < length - 1 && (s.charAt(i) == '1' || s.charAt(i) == '2' && s.charAt(i + 1) < '7')) {
                 dp += dp2;
+            }
             dp2 = dp1;
             dp1 = dp;
         }

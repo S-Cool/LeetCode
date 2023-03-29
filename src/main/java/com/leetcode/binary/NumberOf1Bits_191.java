@@ -31,6 +31,9 @@ public class NumberOf1Bits_191 {
         int n = 00000000000000000000000000001011;
         int result = hammingWeight(n);
         System.out.println("Result: " + result);
+
+        int approach2 = hammingWeightApproach2(n);
+        System.out.println("Result Approach 2: " + approach2);
     }
 
     /**

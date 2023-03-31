@@ -27,6 +27,9 @@ public class MissingNumber_268 {
         int[] nums = {9, 6, 4, 2, 3, 5, 7, 0, 1};
         int result = missingNumber(nums);
         System.out.println("Result: " + result);
+
+        int missingNumberXOR = missingNumberXOR(nums);
+        System.out.println("Result: " + missingNumberXOR);
     }
 
     /**
@@ -49,5 +52,21 @@ public class MissingNumber_268 {
             }
         }
         return -1;
+    }
+
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static int missingNumberXOR(int[] nums) {
+        int result = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            result ^= i;
+            result ^= nums[i];
+        }
+        return result;
     }
 }

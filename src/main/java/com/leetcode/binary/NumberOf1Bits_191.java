@@ -28,7 +28,7 @@ package com.leetcode.binary;
 public class NumberOf1Bits_191 {
 
     public static void main(String[] args) {
-        int n = 00000000000000000000000000001011;
+        int n = 11;
         int result = hammingWeight(n);
         System.out.println("Result: " + result);
 

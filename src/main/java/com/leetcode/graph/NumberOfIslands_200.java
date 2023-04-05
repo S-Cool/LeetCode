@@ -39,7 +39,7 @@ public class NumberOfIslands_200 {
     }
 
     /**
-     * Time complexity: O(n^2)
+     * Time complexity: O(n * m)
      * Space complexity: O(1)
      *
      * @param grid

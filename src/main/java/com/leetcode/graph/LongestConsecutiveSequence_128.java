@@ -26,6 +26,13 @@ public class LongestConsecutiveSequence_128 {
         System.out.println("Result: " + consecutiveTwo);
     }
 
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(n)
+     *
+     * @param nums
+     * @return
+     */
     public static int longestConsecutive(int[] nums) {
         Set<Integer> set = new HashSet<>();
 
@@ -33,13 +40,15 @@ public class LongestConsecutiveSequence_128 {
             set.add(nums[i]);
         }
 
+        Integer[] uniqueNums = set.toArray(new Integer[0]);
+
         int longest = 0;
 
-        for (int i = 0; i < nums.length; i++) {
-            if (!set.contains(nums[i] - 1)) {
+        for (int i = 0; i < uniqueNums.length; i++) {
+            if (!set.contains(uniqueNums[i] - 1)) {
                 int length = 0;
 
-                while (set.contains(nums[i] + length)) {
+                while (set.contains(uniqueNums[i] + length)) {
                     length++;
                     longest = Math.max(length, longest);
                 }
@@ -48,6 +57,13 @@ public class LongestConsecutiveSequence_128 {
         return longest;
     }
 
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(n)
+     *
+     * @param nums
+     * @return
+     */
     public static int longestConsecutiveTwo(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 

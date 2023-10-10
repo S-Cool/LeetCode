@@ -26,6 +26,14 @@ public class ContainsDuplicate_271 {
         System.out.println("Result: " + containsDuplicate);
     }
 
+    /**
+     *
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     *
+     * @param nums - massive with numbers
+     * @return - true if massive contains duplicate
+     */
     public static boolean containsDuplicate(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
 

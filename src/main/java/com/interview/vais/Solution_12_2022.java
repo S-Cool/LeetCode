@@ -17,13 +17,15 @@ public class Solution_12_2022 {
 
     public static void main(String[] args) {
         int[] list = {4, 3, 5, 7, 8};
-        int target = 12;
+        int[] list2 = {3, 5, 8, 9, 13};
 
-        int[] result = solution(list, target);
-        System.out.println("Result: [" + result[0] + ", " + result[1] + "]");
+        int[] resultQuadratic = solutionQuadratic(list, 12);
+        int[] resultLinear = solutionLinear(list2, 15);
+        System.out.println("Result quadratic: [" + resultQuadratic[0] + ", " + resultQuadratic[1] + "]");
+        System.out.println("Result linear: [" + resultLinear[0] + ", " + resultLinear[1] + "]");
     }
 
-    public static int[] solution(int[] elements, int target) {
+    public static int[] solutionQuadratic(int[] elements, int target) {
         int sum = 0;
 
         for (int i = 0; i < elements.length; i++) {
@@ -39,6 +41,29 @@ public class Solution_12_2022 {
                 }
             }
         }
+        return new int[]{-1, -1};
+    }
+
+    public static int[] solutionLinear(int[] elements, int target) {
+        int start = 0;
+        int end = 0;
+        int currentSum = 0;
+
+        while (end < elements.length) {
+            currentSum += elements[end];
+
+            while (currentSum > target && start <= end) {
+                currentSum -= elements[start];
+                start++;
+            }
+
+            if (currentSum == target) {
+                return new int[]{start, end};
+            }
+
+            end++;
+        }
+
         return new int[]{-1, -1};
     }
 }
@@ -62,7 +87,7 @@ public class Solution_12_2022 {
 //    }
 
 
-// FIND A PROBLEM IN CODE BELOW (n + 1 problem in 110 line)
+// FIND A PROBLEM IN CODE BELOW (n + 1 problem in 135 line)
 //
 //@Entity
 //@Table
@@ -107,7 +132,7 @@ public class Solution_12_2022 {
 //                    dto.setId(a.getId());
 //                    dto.setName(a.getName());
 //                    List<BookDTO> books = new ArrayList<>();
-//                    for(Book b : a.getBooks()){
+//                    for(Book b : a.getBooks()){           // n + 1 problem in this line
 //                        BookDTO bDTO = new BookDTO();
 //                        bDTO.setId(b.getId());
 //                        bDTO.setTitle(b.getTitle());

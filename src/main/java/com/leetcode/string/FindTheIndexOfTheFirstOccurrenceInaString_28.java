@@ -23,6 +23,17 @@ public class FindTheIndexOfTheFirstOccurrenceInaString_28 {
         System.out.println("Result: " + i);
     }
 
+    /**
+     * Knuth-Morris-Pratt (KMP) string searching algorithm to find the index of the first occurrence of
+     * a substring (needle) within a string (haystack)
+     *
+     * Time Complexity: O(N+M) N-haystack, M-needle
+     * Space Complexity: O(M)
+     *
+     * @param haystack - The string to be searched.
+     * @param needle The substring to search for.
+     * @return The index of first occurrence or -1 if not found
+     */
     public static int strStr(String haystack, String needle) {
         int left = 0;
         int right = 1;

@@ -49,4 +49,40 @@ public class ProductOfArrayExceptSelf_238 {
 
         return result;
     }
+
+    /**
+     * Time complexity: O(n)
+     * Space complexity: O(1)
+     *
+     *       nums = [1,2,3,4]
+     *     prefix = [1,1,2,6]
+     *    postfix = [24,12,4,1]
+     *
+     *      result = [24,12,8,6]
+     *
+     * @param nums
+     * @return
+     */
+    public static int[] productExceptSelfEasyToUnderstand(int[] nums) {
+        int[] result = new int[nums.length];
+        int[] prefix = new int[nums.length];
+        int[] postfix = new int[nums.length];
+
+        prefix[0] = 1;
+        postfix[nums.length - 1] = 1;
+
+        for(int i = 1; i < nums.length; i++){
+            prefix[i] = prefix[i - 1] * nums[i - 1];
+        }
+
+        for(int j = nums.length - 2; j >= 0 ;j--){
+            postfix[j] = postfix[j + 1] * nums[j + 1];
+        }
+
+        for(int k = 0; k < nums.length; k++){
+            result[k] = prefix[k] * postfix[k];
+        }
+
+        return result;
+    }
 }

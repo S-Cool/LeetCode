@@ -44,35 +44,26 @@ public class FindMinimumInRotatedSortedArray_153 {
      * @return
      */
     public static int findMin(int[] nums) {
-        if (nums.length == 1) {
-            return nums[0];
-        }
-
         int left = 0;
         int right = nums.length - 1;
 
-        if (nums[right] > nums[0]) {
-            return nums[0];
-        }
+        // Perform binary search until the search space is reduced to a single element
+        while (left < right) {
+            int mid = left + (right - left) / 2; // Calculate the middle index
 
-        while (right >= left) {
-
-            int mid = (left + right) / 2;
-
-            if (nums[mid] > nums[mid + 1]) {
-                return nums[mid + 1];
-            }
-
-            if (nums[mid - 1] > nums[mid]) {
-                return nums[mid];
-            }
-
-            if (nums[mid] > nums[0]) {
-                left = mid + 1;
+            // If the middle element is greater than the rightmost element,
+            // the minimum element must be in the right half of the array
+            if (nums[mid] > nums[right]) {
+                left = mid + 1; // Update the left boundary to mid + 1
             } else {
-                right = mid - 1;
+                // Otherwise, the minimum element is in the left half of the array
+                // or it might be the mid element itself, so update the right boundary to mid
+                right = mid;
             }
         }
-        return Integer.MAX_VALUE;
+
+        // At the end of the loop, left and right pointers converge to the minimum element
+        // which is stored at index left or right (they are equal)
+        return nums[left];
     }
 }
